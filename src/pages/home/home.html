@@ -14,4 +14,12 @@
     Take a look at the <code>src/pages/</code> directory to add or change tabs,
     update any existing page or create new pages.
   </p>
+
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="YYYY MM DD" [(ngModel)]="event.dateStarts"></ion-datetime>
+  </ion-item>
+
+  <p style="text-align: center">Date is {{event.dateStarts}}!</p>
+
 </ion-content>

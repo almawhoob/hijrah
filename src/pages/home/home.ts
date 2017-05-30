@@ -7,8 +7,11 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+public event = {
+  dateStarts: new Date()
+};
 
+  constructor(public navCtrl: NavController) {
   }
 
 }
