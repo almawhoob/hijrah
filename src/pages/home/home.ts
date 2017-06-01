@@ -11,9 +11,15 @@ public event = {
   dateStarts: new Date()
 };
 public testDate: any;
+public adjustmentVariable: Number;
 
   constructor(public navCtrl: NavController) {
-      this.testDate = this.writeIslamicDate(1);
+
+  }
+
+  getHijriDate() {
+    console.log("Get Hijri Date.");
+      this.testDate = this.writeIslamicDate(this.adjustmentVariable);
   }
 
   gmod(n,m){

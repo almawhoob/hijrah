@@ -15,6 +15,20 @@
     update any existing page or create new pages.
   </p>
 
+  <ion-list>
+  <ion-item>
+    <ion-label>Adjust Date</ion-label>
+    <ion-select [(ngModel)]="adjustmentVariable" (ionChange)="getHijriDate()">
+      <ion-option value="0">None</ion-option>
+      <ion-option value="1">Add one day</ion-option>
+      <ion-option value="2">Add two days</ion-option>
+      <ion-option value="-1">Subtract one day</ion-option>
+      <ion-option value="-2">Subtract two days</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+
   <ion-item>
     <ion-label>Date</ion-label>
     <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="YYYY MM DD" [(ngModel)]="event.dateStarts"></ion-datetime>
