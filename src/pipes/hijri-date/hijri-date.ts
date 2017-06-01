@@ -1,28 +1,29 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { HijriDatePipe } from '../../pipes/hijri-date/hijri-date';
+import { Pipe, PipeTransform } from '@angular/core';
 
-@Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+/**
+* Generated class for the HijriDatePipe pipe.
+*
+* See https://angular.io/docs/ts/latest/guide/pipes.html for more info on
+* Angular Pipes.
+*/
+@Pipe({
+  name: 'hijriDate',
 })
-export class HomePage {
+export class HijriDatePipe implements PipeTransform {
+  public adjustmentVariable: Number = 0;
+  public testDate: any;
+  public fullDate: any;
 
   public event = {
-    dateStarts: '2017-06-01',//new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + (new Date().getDay()+1),
-    timeStarts: '11:30'//'11:30'
-  };
-  public dateTime: any;
-  public testDate: any;
-  public adjustmentVariable: Number = 0;
-  // public testText: any = '2017-06-01';
-
-  constructor(public navCtrl: NavController) {
-    // this.testDate = this.writeIslamicDate(this.adjustmentVariable);
-    // console.log("START DATE: " + this.event.dateStarts);
+    dateStarts: '2017-06-01',
+    timeStarts: '11:30'
   }
 
-/*
+  // constructor() {
+  //   this.testDate = this.writeIslamicDate(this.adjustmentVariable);
+  //   console.log("START DATE: " + this.event.dateStarts);
+  // }
+
   getHijriDate() {
     console.log("Get Hijri Date.");
     this.testDate = this.writeIslamicDate(this.adjustmentVariable);
@@ -34,15 +35,15 @@ export class HomePage {
 
   hijriCalendar(adjust) {
     console.log("this.event.dateStarts: " + this.event.dateStarts);
-    var today = new Date(this.event.dateStarts + " " + this.event.timeStarts); //new Date();
+    // var today = new Date(this.event.dateStarts + " " + this.event.timeStarts); //new Date();
     if (adjust) {
       var adjustmili = 1000*60*60*24*adjust;
-      var todaymili = today.getTime()+adjustmili;
-      var today = new Date(todaymili);
+      var todaymili = this.fullDate.getTime()+adjustmili;
+      this.fullDate = new Date(todaymili);
     }
-    var day = today.getDate();
-    var month = today.getMonth();
-    var year = today.getFullYear();
+    var day = this.fullDate.getDate();
+    var month = this.fullDate.getMonth();
+    var year = this.fullDate.getFullYear();
     var m = month+1;
     var y = year;
     if (m<3) {
@@ -72,8 +73,8 @@ export class HomePage {
     var cc = Math.floor((bb-122.1)/365.25);
     var dd = Math.floor(365.25*cc);
     var ee = Math.floor((bb-dd)/30.6001);
-    var day =(bb-dd)-Math.floor(30.6001*ee);
-    var month = ee-1;
+    var day: any =(bb-dd)-Math.floor(30.6001*ee);
+    var month: any = ee-1;
     if (ee>13) {
       cc += 1;
       month = ee-13;
@@ -122,6 +123,16 @@ export class HomePage {
     + iDate[5] + " " + iMonthNames[iDate[6]] + " " + iDate[7] + " AH";
     return outputIslamicDate;
   }
-*/
+  /**
+  * Takes a value and makes it lowercase.
+  */
+  transform(value: string, ...args) {
+    this.event.dateStarts = value;
+    this.fullDate = new Date(this.event.dateStarts + " " + this.event.timeStarts); //new Date();
 
-}
+    this.testDate = this.writeIslamicDate(this.adjustmentVariable);
+    console.log("START DATE: " + this.event.dateStarts);
+
+    return this.testDate;
+  }//end of transform
+}//end of class

@@ -31,10 +31,12 @@
 
   <ion-item>
     <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="YYYY MM DD" [(ngModel)]="event.dateStarts" (ionChange)="getHijriDate()"></ion-datetime>
+    <!-- (ionChange)="getHijriDate()" -->
+    <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="YYYY MM DD" [(ngModel)]="event.dateStarts" ></ion-datetime>
   </ion-item>
 
   <p style="text-align: center">Date: {{event.dateStarts}}</p>
-  <p style="text-align: center">Hijri Date: {{testDate}}</p>
+  <!-- <p style="text-align: center">Hijri Date: {{testDate}}</p> -->
+  <p style="text-align: center">Hijri Date: {{event.dateStarts | hijriDate}}</p>
 
 </ion-content>
