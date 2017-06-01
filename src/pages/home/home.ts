@@ -8,13 +8,16 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   public event = {
-    dateStarts: new Date()
+    dateStarts: '2017-06-01',//new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + (new Date().getDay()+1),
+    timeStarts: '11:30'//'11:30'
   };
+  public dateTime: any;
   public testDate: any;
   public adjustmentVariable: Number = 0;
 
   constructor(public navCtrl: NavController) {
     this.testDate = this.writeIslamicDate(this.adjustmentVariable);
+    console.log("START DATE: " + this.event.dateStarts);
   }
 
   getHijriDate() {
@@ -26,8 +29,9 @@ export class HomePage {
     return ((n%m)+m)%m;
   }
 
-  kuwaiticalendar(adjust) {
-    var today = new Date();
+  hijriCalendar(adjust) {
+    console.log("this.event.dateStarts: " + this.event.dateStarts);
+    var today = new Date(this.event.dateStarts + " " + this.event.timeStarts); //new Date();
     if (adjust) {
       var adjustmili = 1000*60*60*24*adjust;
       var todaymili = today.getTime()+adjustmili;
@@ -110,7 +114,7 @@ export class HomePage {
     var iMonthNames = new Array("Muharram","Safar","Rabi'ul Awwal","Rabi'ul Akhir",
     "Jumadal Ula","Jumadal Akhira","Rajab","Sha'ban",
     "Ramadan","Shawwal","Dhul Qa'ada","Dhul Hijja");
-    var iDate = this.kuwaiticalendar(adjustment);
+    var iDate = this.hijriCalendar(adjustment);
     var outputIslamicDate = wdNames[iDate[4]] + ", "
     + iDate[5] + " " + iMonthNames[iDate[6]] + " " + iDate[7] + " AH";
     return outputIslamicDate;
