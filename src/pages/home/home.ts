@@ -7,7 +7,8 @@ import { HijriDatePipe } from '../../pipes/hijri-date/hijri-date';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  // public dateObj = new Date();
+  public todaysDate: any = new Date().toDateString();
   public event = {
     dateStarts: '2017-06-01',//new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + (new Date().getDay()+1),
     timeStarts: '11:30'//'11:30'

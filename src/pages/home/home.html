@@ -1,19 +1,23 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Hijrah</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
+  <h3 style="text-align: center">Gregorian to Hijri Date Converter!</h3>
+  <!-- <p>
+    The Islamic, Muslim, or Hijri calendar (Arabic: التقويم الهجري‎‎ at-taqwīm al-hijrī) is a lunar calendar consisting of 12 months in a year of 354 or 355 days. It is used (often alongside the Gregorian calendar) to date events in many Muslim countries. It is also used by Muslims to determine the proper days of Islamic holidays and rituals, such as the annual period of fasting and the proper time for the pilgrimage to Mecca.
+  </p> -->
+  <!-- <p>
     Take a look at the <code>src/pages/</code> directory to add or change tabs,
     update any existing page or create new pages.
-  </p>
+  </p> -->
+  <div style="text-align: center">
+  <p>Today's Date</p>
+  <p>{{todaysDate}}</p>
+  <p>{{todaysDate | hijriDate}}</p>
+</div>
 
   <ion-list>
   <ion-item>
